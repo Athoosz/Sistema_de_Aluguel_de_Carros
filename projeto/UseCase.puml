@@ -1,0 +1,49 @@
+@startuml
+title Diagrama de Casos de Uso - Sistema de Aluguel de Carros
+
+actor "Usuário" as Usuario
+actor "Cliente" as Cliente
+actor "Agente" as Agente
+
+Usuario <|-- Cliente
+Usuario <|-- Agente
+
+' Casos de uso de autenticação
+usecase "Realizar Cadastro/Registro" as UC_Cadastrar
+usecase "Realizar Login" as UC_Login
+
+' Casos de uso do Cliente
+usecase "Criar Pedido de Aluguel" as UC_CriarPedido
+usecase "Consultar Pedido de Aluguel" as UC_ConsultarPedido
+usecase "Cancelar Pedido de Aluguel" as UC_CancelarPedido
+usecase "Visualizar Proprietário do Automóvel" as UC_VisualizarProprietario
+usecase "Gerenciar Dados Pessoais" as UC_GerenciarDadosPessoais
+
+' Casos de uso do Agente
+usecase "Avaliar Pedidos de Aluguel" as UC_AvaliarPedido
+usecase "Conceder Contrato de Crédito" as UC_ConcederCredito
+usecase "Gerenciar Automóveis" as UC_GerenciarAutomoveis
+
+' Casos de uso do Agente e cliente
+usecase "Modificar Pedido de Aluguel" as UC_ModificarPedido
+usecase "Registrar Contrato de Aluguel" as UC_RegistrarContrato
+
+' Relacionamentos
+Usuario --> UC_Cadastrar
+Usuario --> UC_Login
+
+Cliente --> UC_CriarPedido
+Cliente --> UC_ModificarPedido
+Cliente --> UC_ConsultarPedido
+Cliente --> UC_CancelarPedido
+Cliente --> UC_VisualizarProprietario
+Cliente --> UC_GerenciarDadosPessoais
+
+Agente --> UC_AvaliarPedido
+Agente --> UC_ModificarPedido
+Agente --> UC_RegistrarContrato
+Agente --> UC_ConcederCredito
+Agente --> UC_GerenciarAutomoveis
+
+UC_RegistrarContrato --> Cliente
+@enduml
