@@ -1,0 +1,49 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>270</x><y>0</y><w>210</w><h>140</h></coordinates><panel_attributes>Usuario
+--
+-id: Long
+-email: String
+-senha: String
+--
++cadastrar()
++login()
++editar():
++deletar(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>200</y><w>250</w><h>200</h></coordinates><panel_attributes>Cliente
+--
+-cpf: String
+-rg: String
+-nome: String
+-endereco: String
+-profissao: String
+-rendaEntidade: Map&lt;String, Double&gt;
+--
++criarPedido(PedidoRequest): Pedido
++modificarPedido(PedidoRequest): Pedido
++consultarPedido(id:Long): Pedido
++removerPedido(id: Long) void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>490</x><y>450</y><w>210</w><h>130</h></coordinates><panel_attributes>Automoveis
+--
+-id: Long
+-matricula: String
+-ano: LocalDate
+-marca: String
+-modelo: String
+-placa: String
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>110</x><y>120</y><w>180</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>160;10;10;10;10;80</additional_attributes></element><element><id>UMLClass</id><coordinates><x>520</x><y>200</y><w>280</w><h>100</h></coordinates><panel_attributes>Agente
+--
+-cnpj: String
+-tipoAgente: TipoAgente
+--
++aceitarPedido(id: Long): Pedido
++negarPedido(id: Long): Pedido </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>470</x><y>110</y><w>160</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;140;10;140;90</additional_attributes></element><element><id>UMLClass</id><coordinates><x>130</x><y>470</y><w>210</w><h>110</h></coordinates><panel_attributes>Pedido
+--
+-contrato: Contrato
+-cliente: Cliente
+-agente: Agente
+-estado: Estado
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>270</x><y>630</y><w>210</w><h>90</h></coordinates><panel_attributes>Contrato
+--
+-tipoContrato: TipoContrato
+-automoveis: List&lt;Automoveis&gt;
+-proprietario: Usuario
+-</panel_attributes><additional_attributes></additional_attributes></element></diagram>
