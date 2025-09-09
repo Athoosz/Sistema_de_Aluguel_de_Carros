@@ -11,6 +11,8 @@ Usuario <|-- Agente
 ' Casos de uso de autenticação
 usecase "Realizar Cadastro/Registro" as UC_Cadastrar
 usecase "Realizar Login" as UC_Login
+usecase "Atualizar Conta" as UC_AtualizarConta
+usecase "Remover Conta" as UC_RemoverConta
 
 ' Casos de uso do Cliente
 usecase "Criar Pedido de Aluguel" as UC_CriarPedido
@@ -27,23 +29,27 @@ usecase "Gerenciar Automóveis" as UC_GerenciarAutomoveis
 ' Casos de uso do Agente e cliente
 usecase "Modificar Pedido de Aluguel" as UC_ModificarPedido
 usecase "Registrar Contrato de Aluguel" as UC_RegistrarContrato
+usecase "Registrar Contrato de Crédito   " as UC_RegistrarContratoCredito
 
 ' Relacionamentos
-Usuario --> UC_Cadastrar
-Usuario --> UC_Login
+Usuario -- UC_Cadastrar
+Usuario -- UC_Login
+Usuario -- UC_AtualizarConta
+Usuario -- UC_RemoverConta
 
-Cliente --> UC_CriarPedido
-Cliente --> UC_ModificarPedido
-Cliente --> UC_ConsultarPedido
-Cliente --> UC_CancelarPedido
-Cliente --> UC_VisualizarProprietario
-Cliente --> UC_GerenciarDadosPessoais
+Cliente -- UC_CriarPedido
+Cliente -- UC_ModificarPedido
+Cliente -- UC_ConsultarPedido
+Cliente -- UC_CancelarPedido
+Cliente -- UC_VisualizarProprietario
+Cliente -- UC_GerenciarDadosPessoais
 
-Agente --> UC_AvaliarPedido
-Agente --> UC_ModificarPedido
-Agente --> UC_RegistrarContrato
-Agente --> UC_ConcederCredito
-Agente --> UC_GerenciarAutomoveis
+Agente -- UC_AvaliarPedido
+Agente -- UC_ModificarPedido
+Agente -- UC_RegistrarContrato
+(UC_RegistrarContratoCredito) ..> (UC_RegistrarContrato) : <<extends>>
+Agente -- UC_ConcederCredito
+Agente -- UC_GerenciarAutomoveis
 
 UC_RegistrarContrato --> Cliente
 @enduml
