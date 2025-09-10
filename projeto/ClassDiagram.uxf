@@ -1,4 +1,4 @@
-<diagram program="umletino" version="15.1"><zoom_level>9</zoom_level><element><id>UMLClass</id><coordinates><x>333</x><y>25</y><w>189</w><h>126</h></coordinates><panel_attributes>Usuario
+<diagram program="umletino" version="15.1"><zoom_level>9</zoom_level><element><id>UMLClass</id><coordinates><x>333</x><y>0</y><w>189</w><h>126</h></coordinates><panel_attributes>Usuario
 --
 -id: Long
 -email: String
@@ -7,7 +7,7 @@
 +cadastrar()
 +login()
 +editar():
-+deletar(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>178</y><w>225</w><h>180</h></coordinates><panel_attributes>Cliente
++deletar(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>153</y><w>225</w><h>180</h></coordinates><panel_attributes>Cliente
 --
 -cpf: String
 -rg: String
@@ -19,7 +19,7 @@
 +criarPedido(PedidoRequest): Pedido
 +modificarPedido(PedidoRequest): Pedido
 +consultarPedido(id:Long): Pedido
-+removerPedido(id: Long) void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>603</x><y>421</y><w>189</w><h>117</h></coordinates><panel_attributes>Automovel
++removerPedido(id: Long) void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>603</x><y>396</y><w>189</w><h>117</h></coordinates><panel_attributes>Automovel
 --
 -id: Long
 -matricula: String
@@ -28,19 +28,19 @@
 -modelo: String
 -placa: String
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>135</x><y>133</y><w>216</w><h>63</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>220;10;10;10;10;50</additional_attributes></element><element><id>UMLClass</id><coordinates><x>612</x><y>205</y><w>252</w><h>90</h></coordinates><panel_attributes>Agente
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>135</x><y>108</y><w>216</w><h>63</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>220;10;10;10;10;50</additional_attributes></element><element><id>UMLClass</id><coordinates><x>612</x><y>180</y><w>252</w><h>90</h></coordinates><panel_attributes>Agente
 --
 -cnpj: String
 -tipoAgente: TipoAgente
 --
 +aceitarPedido(id: Long): Pedido
-+negarPedido(id: Long): Pedido </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>513</x><y>124</y><w>198</w><h>99</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;200;10;200;90</additional_attributes></element><element><id>UMLClass</id><coordinates><x>108</x><y>394</y><w>189</w><h>99</h></coordinates><panel_attributes>Pedido
++negarPedido(id: Long): Pedido </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>513</x><y>99</y><w>198</w><h>99</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;200;10;200;90</additional_attributes></element><element><id>UMLClass</id><coordinates><x>108</x><y>369</y><w>189</w><h>81</h></coordinates><panel_attributes>Pedido
 --
 -cliente: Cliente
 -estadoPedido: EstadoPedido
 -automovel: Automovel
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>378</x><y>295</y><w>189</w><h>108</h></coordinates><panel_attributes>Contrato
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>378</x><y>270</y><w>189</w><h>108</h></coordinates><panel_attributes>Contrato
 --
 -tipoContrato: TipoContrato
 -automoveis: Automovel
@@ -48,17 +48,17 @@
 -agente: Agente
 -proprietario: String
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>648</x><y>322</y><w>189</w><h>63</h></coordinates><panel_attributes>&lt;&lt;enum&gt;&gt;
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>648</x><y>297</y><w>189</w><h>63</h></coordinates><panel_attributes>&lt;&lt;enum&gt;&gt;
 TipoContrato
 --
 ALUGUEL
-CREDITO</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>918</x><y>214</y><w>189</w><h>54</h></coordinates><panel_attributes>TipoAgente
+CREDITO</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>918</x><y>189</y><w>189</w><h>54</h></coordinates><panel_attributes>TipoAgente
 --
 BANCO
 EMPRESA
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>855</x><y>232</y><w>81</w><h>27</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>70;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>108</x><y>529</y><w>189</w><h>99</h></coordinates><panel_attributes>&lt;&lt;enum&gt;&gt;
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>855</x><y>207</y><w>81</w><h>27</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>70;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>108</x><y>504</y><w>189</w><h>99</h></coordinates><panel_attributes>&lt;&lt;enum&gt;&gt;
 EstadoPedido
 --
 ANDAMENTO
 APROVADO
-REJEITADO</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>189</x><y>484</y><w>27</w><h>63</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;50;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>288</x><y>385</y><w>108</w><h>27</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>100;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>504</x><y>268</y><w>126</w><h>45</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;30;120;10</additional_attributes></element><element><id>Relation</id><coordinates><x>99</x><y>349</y><w>27</w><h>63</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;50;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>288</x><y>448</y><w>333</w><h>27</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;350;10</additional_attributes></element><element><id>Relation</id><coordinates><x>558</x><y>331</y><w>108</w><h>27</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>100;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>261</x><y>250</y><w>369</w><h>162</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;160;10;10;390;10</additional_attributes></element></diagram>
+REJEITADO</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>189</x><y>441</y><w>27</w><h>81</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;70;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>288</x><y>360</y><w>108</w><h>27</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>100;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>504</x><y>243</y><w>126</w><h>45</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;30;120;10</additional_attributes></element><element><id>Relation</id><coordinates><x>99</x><y>324</y><w>27</w><h>63</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;50;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>288</x><y>423</y><w>333</w><h>27</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;350;10</additional_attributes></element><element><id>Relation</id><coordinates><x>558</x><y>306</y><w>108</w><h>27</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>100;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>261</x><y>225</y><w>369</w><h>162</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;160;10;10;390;10</additional_attributes></element></diagram>
