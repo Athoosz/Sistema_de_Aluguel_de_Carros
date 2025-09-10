@@ -15,11 +15,12 @@
 -endereco: String
 -profissao: String
 -rendaEntidade: Map&lt;String, Double&gt;
+-pedidos: List&lt;Pedido&gt;
 --
 +criarPedido(PedidoRequest): Pedido
 +modificarPedido(PedidoRequest): Pedido
 +consultarPedido(id:Long): Pedido
-+removerPedido(id: Long) void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>603</x><y>396</y><w>189</w><h>117</h></coordinates><panel_attributes>Automovel
++removerPedido(id: Long) void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>423</x><y>477</y><w>189</w><h>117</h></coordinates><panel_attributes>Automovel
 --
 -id: Long
 -matricula: String
@@ -28,37 +29,52 @@
 -modelo: String
 -placa: String
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>135</x><y>108</y><w>216</w><h>63</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>220;10;10;10;10;50</additional_attributes></element><element><id>UMLClass</id><coordinates><x>612</x><y>180</y><w>252</w><h>90</h></coordinates><panel_attributes>Agente
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>135</x><y>108</y><w>216</w><h>63</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>220;10;10;10;10;50</additional_attributes></element><element><id>UMLClass</id><coordinates><x>765</x><y>180</y><w>252</w><h>108</h></coordinates><panel_attributes>Agente
 --
 -cnpj: String
 -tipoAgente: TipoAgente
 --
 +aceitarPedido(id: Long): Pedido
-+negarPedido(id: Long): Pedido </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>513</x><y>99</y><w>198</w><h>99</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;200;10;200;90</additional_attributes></element><element><id>UMLClass</id><coordinates><x>108</x><y>369</y><w>189</w><h>81</h></coordinates><panel_attributes>Pedido
++negarPedido(id: Long): Pedido 
++criarContrato(contrato:Contrato): Contrato</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>513</x><y>99</y><w>279</w><h>99</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;290;10;290;90</additional_attributes></element><element><id>UMLClass</id><coordinates><x>108</x><y>369</y><w>189</w><h>81</h></coordinates><panel_attributes>Pedido
 --
+id: Long
 -cliente: Cliente
 -estadoPedido: EstadoPedido
 -automovel: Automovel
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>378</x><y>270</y><w>189</w><h>108</h></coordinates><panel_attributes>Contrato
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>405</x><y>288</y><w>324</w><h>153</h></coordinates><panel_attributes>Contrato
 --
+id: Long
 -tipoContrato: TipoContrato
 -automoveis: Automovel
 -cliente: Cliente
 -agente: Agente
 -proprietario: String
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>648</x><y>297</y><w>189</w><h>63</h></coordinates><panel_attributes>&lt;&lt;enum&gt;&gt;
++visualizarContrato(id: Long, identificacao: String): Contrato
++alterarContrato(contrato: Contrato): Contrato
++excluirContrato(contrato: Contrato): Contrato</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>792</x><y>351</y><w>189</w><h>63</h></coordinates><panel_attributes>&lt;&lt;enum&gt;&gt;
 TipoContrato
 --
 ALUGUEL
-CREDITO</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>918</x><y>189</y><w>189</w><h>54</h></coordinates><panel_attributes>TipoAgente
+CREDITO</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1062</x><y>180</y><w>189</w><h>54</h></coordinates><panel_attributes>TipoAgente
 --
 BANCO
 EMPRESA
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>855</x><y>207</y><w>81</w><h>27</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>70;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>108</x><y>504</y><w>189</w><h>99</h></coordinates><panel_attributes>&lt;&lt;enum&gt;&gt;
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1008</x><y>198</y><w>72</w><h>36</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>60;10;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>108</x><y>504</y><w>189</w><h>99</h></coordinates><panel_attributes>&lt;&lt;enum&gt;&gt;
 EstadoPedido
 --
 ANDAMENTO
 APROVADO
-REJEITADO</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>189</x><y>441</y><w>27</w><h>81</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;70;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>288</x><y>360</y><w>108</w><h>27</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>100;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>504</x><y>243</y><w>126</w><h>45</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;30;120;10</additional_attributes></element><element><id>Relation</id><coordinates><x>99</x><y>324</y><w>27</w><h>63</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;50;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>288</x><y>423</y><w>333</w><h>27</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;350;10</additional_attributes></element><element><id>Relation</id><coordinates><x>558</x><y>306</y><w>108</w><h>27</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>100;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>261</x><y>225</y><w>369</w><h>162</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;160;10;10;390;10</additional_attributes></element></diagram>
+REJEITADO</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>189</x><y>441</y><w>27</w><h>81</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;70;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>288</x><y>360</y><w>135</w><h>36</h></coordinates><panel_attributes>lt=&lt;-
+m1=1
+m2=1</panel_attributes><additional_attributes>130;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>558</x><y>234</y><w>225</w><h>72</h></coordinates><panel_attributes>lt=&lt;.
+m1=0..n
+m2=1</panel_attributes><additional_attributes>10;60;10;10;230;10</additional_attributes></element><element><id>Relation</id><coordinates><x>288</x><y>423</y><w>153</w><h>108</h></coordinates><panel_attributes>lt=&lt;-
+m1=1
+m2=0..1</panel_attributes><additional_attributes>150;100;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>720</x><y>351</y><w>90</w><h>27</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>80;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>243</x><y>180</y><w>540</w><h>207</h></coordinates><panel_attributes>lt=&lt;-
+m1=0..n
+m2=1</panel_attributes><additional_attributes>10;210;10;10;580;10</additional_attributes></element><element><id>Relation</id><coordinates><x>9</x><y>324</y><w>117</w><h>126</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=0..n
+m2=1</panel_attributes><additional_attributes>110;110;10;110;10;10</additional_attributes></element></diagram>
