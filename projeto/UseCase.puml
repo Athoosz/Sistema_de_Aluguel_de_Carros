@@ -25,6 +25,9 @@ usecase "Gerenciar Dados Pessoais" as UC_GerenciarDadosPessoais
 usecase "Avaliar Pedidos de Aluguel" as UC_AvaliarPedido
 usecase "Conceder Contrato de Crédito" as UC_ConcederCredito
 usecase "Gerenciar Automóveis" as UC_GerenciarAutomoveis
+usecase "Vizualizar contrato de aluguel" as UC_VizualizarContratoAluguel
+usecase "Excluir contrato de aluguel" as UC_ExcluirContratoAluguel
+usecase "Alterar contrato de aluguel" as UC_AlterarContratoAluguel
 
 ' Casos de uso do Agente e cliente
 usecase "Modificar Pedido de Aluguel" as UC_ModificarPedido
@@ -50,6 +53,9 @@ Agente -- UC_RegistrarContrato
 (UC_RegistrarContratoCredito) ..> (UC_RegistrarContrato) : <<extends>>
 Agente -- UC_ConcederCredito
 Agente -- UC_GerenciarAutomoveis
+Agente -- UC_VizualizarContratoAluguel
+Agente -- UC_ExcluirContratoAluguel
+Agente -- UC_AlterarContratoAluguel
 
 UC_RegistrarContrato --> Cliente
 @enduml
