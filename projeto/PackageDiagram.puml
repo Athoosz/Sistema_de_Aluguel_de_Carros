@@ -1,0 +1,63 @@
+@startuml
+package "domain" as domain {
+  class Usuario
+  class Cliente
+  class Agente
+  class Pedido
+  enum EstadoPedido
+  class Contrato
+  enum TipoContrato
+  class Automovel
+  enum TipoAgente
+}
+
+package "service" as service {
+  class UsuarioService
+  class ClienteService
+  class AgenteService
+  class PedidoService
+  class ContratoService
+}
+
+package "controller" as controller {
+  class PedidoController
+  class ContratoController
+  class UsuarioController
+  class ClienteController
+  class AgenteController
+}
+
+package "dto" as dto {
+  class PedidoRequest
+  class UsuarioRequest
+  class LoginRequest
+  class ClienteRequest
+  class AgenteRequest
+  class ContratoRequest
+  class AutomovelRequest
+
+  class PedidoResponse
+  class UsuarioResponse
+  class ClienteResponse
+  class AgenteResponse
+  class ContratoResponse
+  class AutomovelResponse
+}
+
+package "repository" as repository {
+  interface UsuarioRepository
+  interface ClienteRepository
+  interface AgenteRepository
+  interface PedidoRepository
+  interface ContratoRepository
+  interface AutomovelRepository
+}
+
+' Relações entre pacotes organizadas de forma hierárquica
+controller ..> service : usa
+controller ..> dto : usa
+service ..> repository : usa
+service ..> domain : usa
+dto ..> domain : usa
+
+@enduml
