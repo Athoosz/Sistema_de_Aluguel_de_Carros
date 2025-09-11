@@ -53,7 +53,6 @@ package "repository" as repository {
   interface AutomovelRepository
 }
 
-' Relações entre pacotes organizadas de forma hierárquica
 controller ..> service : usa
 controller ..> dto : usa
 service ..> repository : usa
