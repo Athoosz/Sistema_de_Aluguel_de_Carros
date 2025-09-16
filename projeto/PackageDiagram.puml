@@ -1,14 +1,15 @@
 @startuml
-package "domain" as domain {
-  class Usuario
-  class Cliente
-  class Agente
-  class Pedido
-  enum EstadoPedido
-  class Contrato
-  enum TipoContrato
-  class Automovel
-  enum TipoAgente
+!define DIRECTION top to bottom direction
+
+skinparam packageStyle rectangle
+skinparam linetype ortho
+
+package "controller" as controller {
+  class PedidoController
+  class ContratoController
+  class UsuarioController
+  class ClienteController
+  class AgenteController
 }
 
 package "service" as service {
@@ -17,14 +18,6 @@ package "service" as service {
   class AgenteService
   class PedidoService
   class ContratoService
-}
-
-package "controller" as controller {
-  class PedidoController
-  class ContratoController
-  class UsuarioController
-  class ClienteController
-  class AgenteController
 }
 
 package "dto" as dto {
@@ -53,10 +46,25 @@ package "repository" as repository {
   interface AutomovelRepository
 }
 
-controller ..> service : usa
-controller ..> dto : usa
-service ..> repository : usa
-service ..> domain : usa
-dto ..> domain : usa
+package "domain" as domain {
+  class Usuario
+  class Cliente
+  class Agente
+  class Pedido
+  enum EstadoPedido
+  class Contrato
+  enum TipoContrato
+  class Automovel
+  enum TipoAgente
+}
+
+controller -down-> service : usa
+service -down-> repository : usa
+service -right-> dto : usa
+dto -down-> domain : transforma
+
+
+controller -[hidden]-> dto
+service -[hidden]-> domain
 
 @enduml
