@@ -11,51 +11,42 @@ Usuario <|-- Agente
 ' Casos de uso de autenticação
 usecase "Realizar Cadastro/Registro" as UC_Cadastrar
 usecase "Realizar Login" as UC_Login
-usecase "Atualizar Conta" as UC_AtualizarConta
-usecase "Remover Conta" as UC_RemoverConta
 
 ' Casos de uso do Cliente
-usecase "Criar Pedido de Aluguel" as UC_CriarPedido
-usecase "Consultar Pedido de Aluguel" as UC_ConsultarPedido
-usecase "Cancelar Pedido de Aluguel" as UC_CancelarPedido
+usecase "Criar Pedido" as UC_CriarPedido
+usecase "Consultar Pedido" as UC_ConsultarPedido
+usecase "Cancelar Pedido" as UC_CancelarPedido
 usecase "Visualizar Proprietário do Automóvel" as UC_VisualizarProprietario
 usecase "Gerenciar Dados Pessoais" as UC_GerenciarDadosPessoais
 
 ' Casos de uso do Agente
-usecase "Avaliar Pedidos de Aluguel" as UC_AvaliarPedido
-usecase "Conceder Contrato de Crédito" as UC_ConcederCredito
+usecase "Avaliar Pedidos" as UC_AvaliarPedido
 usecase "Gerenciar Automóveis" as UC_GerenciarAutomoveis
-usecase "Vizualizar contrato de aluguel" as UC_VizualizarContratoAluguel
-usecase "Excluir contrato de aluguel" as UC_ExcluirContratoAluguel
-usecase "Alterar contrato de aluguel" as UC_AlterarContratoAluguel
+usecase "Vizualizar contrato" as UC_VizualizarContrato
+usecase "Excluir contrato" as UC_ExcluirContrato
+usecase "Alterar contrato" as UC_AlterarContrato
 
 ' Casos de uso do Agente e cliente
-usecase "Modificar Pedido de Aluguel" as UC_ModificarPedido
-usecase "Registrar Contrato de Aluguel" as UC_RegistrarContrato
-usecase "Registrar Contrato de Crédito   " as UC_RegistrarContratoCredito
+usecase "Modificar Pedido" as UC_ModificarPedido
+usecase "Registrar Contrato" as UC_RegistrarContrato
 
 ' Relacionamentos
 Usuario -- UC_Cadastrar
 Usuario -- UC_Login
-Usuario -- UC_AtualizarConta
-Usuario -- UC_RemoverConta
+Usuario -- UC_ModificarPedido
 
 Cliente -- UC_CriarPedido
-Cliente -- UC_ModificarPedido
 Cliente -- UC_ConsultarPedido
 Cliente -- UC_CancelarPedido
 Cliente -- UC_VisualizarProprietario
 Cliente -- UC_GerenciarDadosPessoais
 
 Agente -- UC_AvaliarPedido
-Agente -- UC_ModificarPedido
 Agente -- UC_RegistrarContrato
-(UC_RegistrarContratoCredito) ..> (UC_RegistrarContrato) : <<extends>>
-Agente -- UC_ConcederCredito
 Agente -- UC_GerenciarAutomoveis
-Agente -- UC_VizualizarContratoAluguel
-Agente -- UC_ExcluirContratoAluguel
-Agente -- UC_AlterarContratoAluguel
+Agente -- UC_VizualizarContrato
+Agente -- UC_ExcluirContrato
+Agente -- UC_AlterarContrato
 
 UC_RegistrarContrato --> Cliente
 @enduml
