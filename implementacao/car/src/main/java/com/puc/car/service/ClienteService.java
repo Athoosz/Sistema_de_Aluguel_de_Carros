@@ -1,8 +1,7 @@
 package com.puc.car.service;
 
 import com.puc.car.models.Cliente;
-import com.puc.car.models.Usuario;
-import com.puc.car.repositories.UsuarioRepository;
+import com.puc.car.repositories.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -12,23 +11,15 @@ import java.util.UUID;
 public class ClienteService {
 
     @Autowired
-    private UsuarioRepository usuarioRepository;
+    private ClienteRepository clienteRepository;
 
     public Cliente buscarClientePorId(UUID id) {
-        Usuario usuario = usuarioRepository.findById(id)
+        return clienteRepository.findById(id)
             .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
-        
-        if (!(usuario instanceof Cliente)) {
-            throw new RuntimeException("Usuário não é um cliente");
-        }
-        
-        return (Cliente) usuario;
     }
 
-    public List<Usuario> listarTodosClientes() {
-        return usuarioRepository.findAll().stream()
-            .filter(usuario -> usuario instanceof Cliente)
-            .toList();
+    public List<Cliente> listarTodosClientes() {
+        return clienteRepository.findAll();
     }
 
     public Cliente atualizarDadosPessoais(UUID id, String nome, String endereco, String profissao) {
@@ -36,19 +27,23 @@ public class ClienteService {
         cliente.setNome(nome);
         cliente.setEndereco(endereco);
         cliente.setProfissao(profissao);
-        return (Cliente) usuarioRepository.save(cliente);
+        return clienteRepository.save(cliente);
     }
 
-    // Métodos específicos para os casos de uso do cliente
-    public void criarPedido() {
-        // TODO: Implementar lógica de criação de pedido
+    public Cliente buscarPorCpf(String cpf) {
+        return clienteRepository.findByCpf(cpf)
+            .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
     }
 
-    public void consultarPedido(UUID pedidoId) {
-        // TODO: Implementar lógica de consulta de pedido
+    public Cliente buscarPorEmail(String email) {
+        return clienteRepository.findByEmail(email)
+            .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
     }
 
-    public void cancelarPedido(UUID pedidoId) {
-        // TODO: Implementar lógica de cancelamento de pedido
+    public void deletarCliente(UUID id) {
+        if (!clienteRepository.existsById(id)) {
+            throw new RuntimeException("Cliente não encontrado");
+        }
+        clienteRepository.deleteById(id);
     }
 }

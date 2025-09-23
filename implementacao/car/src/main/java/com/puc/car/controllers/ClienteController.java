@@ -50,34 +50,4 @@ public class ClienteController {
       return ResponseEntity.notFound().build();
     }
   }
-
-  @PostMapping("/pedidos")
-  public ResponseEntity<String> criarPedido() {
-    try {
-      clienteService.criarPedido();
-      return ResponseEntity.ok("Pedido criado com sucesso");
-    } catch (RuntimeException e) {
-      return ResponseEntity.badRequest().body(e.getMessage());
-    }
-  }
-
-  @GetMapping("/pedidos/{pedidoId}")
-  public ResponseEntity<String> consultarPedido(@PathVariable UUID pedidoId) {
-    try {
-      clienteService.consultarPedido(pedidoId);
-      return ResponseEntity.ok("Pedido consultado com sucesso");
-    } catch (RuntimeException e) {
-      return ResponseEntity.notFound().build();
-    }
-  }
-
-  @DeleteMapping("/pedidos/{pedidoId}")
-  public ResponseEntity<String> cancelarPedido(@PathVariable UUID pedidoId) {
-    try {
-      clienteService.cancelarPedido(pedidoId);
-      return ResponseEntity.ok("Pedido cancelado com sucesso");
-    } catch (RuntimeException e) {
-      return ResponseEntity.badRequest().body(e.getMessage());
-    }
-  }
 }
