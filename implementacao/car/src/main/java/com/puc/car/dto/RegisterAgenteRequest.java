@@ -2,5 +2,5 @@ package com.puc.car.dto;
 
 import com.puc.car.models.enums.TipoAgente;
 
-public record RegisterAgenteRequestDTO(
+public record RegisterAgenteRequest(
     String email, String senha, String cnpj, TipoAgente tipoAgente) {}
