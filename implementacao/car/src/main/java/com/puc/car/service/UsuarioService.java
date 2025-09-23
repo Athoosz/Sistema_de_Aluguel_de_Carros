@@ -31,6 +31,7 @@ public class UsuarioService {
         cliente.setSenha(passwordEncoder.encode(dto.senha()));
         cliente.setNome(dto.nome());
         cliente.setCpf(dto.cpf());
+        cliente.setRg(dto.rg());
         cliente.setEndereco(dto.endereco());
         cliente.setProfissao(dto.profissao());
 

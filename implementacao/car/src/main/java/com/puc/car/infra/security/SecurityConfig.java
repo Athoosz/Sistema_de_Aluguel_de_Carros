@@ -44,9 +44,9 @@ public class SecurityConfig {
                         "/webjars/**")
                     .permitAll()
                     .requestMatchers("/cliente/**")
-                    .hasRole("CLIENTE")
+                   .permitAll()
                     .requestMatchers("/agente/**")
-                    .hasRole("AGENTE")
+                    .permitAll()
                     .anyRequest()
                     .authenticated())
         .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class);
