@@ -12,7 +12,7 @@ import jakarta.validation.constraints.NotNull;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class AgenteRequestDTO extends UsuarioRequestDTO {
+public class AgenteRequest extends UsuarioRequest {
     
     @NotBlank(message = "CNPJ é obrigatório")
     private String cnpj;

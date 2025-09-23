@@ -10,7 +10,7 @@ import jakarta.validation.constraints.Size;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UsuarioRequestDTO {
+public class UsuarioRequest {
     
     @NotBlank(message = "Email é obrigatório")
     @Email(message = "Email deve ter formato válido")

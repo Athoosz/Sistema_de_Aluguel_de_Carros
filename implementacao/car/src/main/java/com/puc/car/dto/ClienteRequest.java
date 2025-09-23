@@ -11,7 +11,7 @@ import java.util.Map;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class ClienteRequestDTO extends UsuarioRequestDTO {
+public class ClienteRequest extends UsuarioRequest {
     
     @NotBlank(message = "CPF é obrigatório")
     private String cpf;

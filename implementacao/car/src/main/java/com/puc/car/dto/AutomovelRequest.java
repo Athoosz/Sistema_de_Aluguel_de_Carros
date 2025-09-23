@@ -10,7 +10,7 @@ import jakarta.validation.constraints.Positive;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AutomovelRequestDTO {
+public class AutomovelRequest {
     
     @NotBlank(message = "Matrícula é obrigatória")
     private String matricula;

@@ -10,7 +10,7 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PedidoRequestDTO {
+public class PedidoRequest {
     
     @NotNull(message = "Cliente é obrigatório")
     private UUID clienteId;

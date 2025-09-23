@@ -8,7 +8,7 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UsuarioResponseDTO {
+public class UsuarioResponse {
     private UUID id;
     private String email;
 }

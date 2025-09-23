@@ -1,7 +1,7 @@
 package com.puc.car.service;
 
-import com.puc.car.dto.RegisterAgenteRequestDTO;
-import com.puc.car.dto.RegisterClienteRequestDTO;
+import com.puc.car.dto.RegisterAgenteRequest;
+import com.puc.car.dto.RegisterClienteRequest;
 import com.puc.car.models.Agente;
 import com.puc.car.models.Cliente;
 import com.puc.car.models.Usuario;
@@ -19,7 +19,7 @@ public class UsuarioService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public Usuario cadastrarCliente(RegisterClienteRequestDTO dto) {
+    public Usuario cadastrarCliente(RegisterClienteRequest dto) {
         // Validação de negócio
         if (usuarioRepository.findByEmail(dto.email()).isPresent()) {
             throw new RuntimeException("Email já cadastrado");
@@ -37,7 +37,7 @@ public class UsuarioService {
         return usuarioRepository.save(cliente);
     }
 
-    public Usuario cadastrarAgente(RegisterAgenteRequestDTO dto) {
+    public Usuario cadastrarAgente(RegisterAgenteRequest dto) {
         // Validação de negócio
         if (usuarioRepository.findByEmail(dto.email()).isPresent()) {
             throw new RuntimeException("Email já cadastrado");

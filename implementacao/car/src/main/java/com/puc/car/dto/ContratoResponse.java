@@ -9,7 +9,7 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ContratoResponseDTO {
+public class ContratoResponse {
     private UUID id;
     private UUID clienteId;
     private UUID agenteId;

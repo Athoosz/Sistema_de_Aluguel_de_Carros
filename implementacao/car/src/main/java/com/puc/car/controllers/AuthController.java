@@ -1,9 +1,9 @@
 package com.puc.car.controllers;
 
-import com.puc.car.dto.LoginRequestDTO;
-import com.puc.car.dto.RegisterAgenteRequestDTO;
-import com.puc.car.dto.RegisterClienteRequestDTO;
-import com.puc.car.dto.ResponseDTO;
+import com.puc.car.dto.LoginRequest;
+import com.puc.car.dto.RegisterAgenteRequest;
+import com.puc.car.dto.RegisterClienteRequest;
+import com.puc.car.dto.Response;
 import com.puc.car.infra.security.TokenService;
 import com.puc.car.models.Usuario;
 import com.puc.car.service.UsuarioService;
@@ -28,13 +28,13 @@ public class AuthController {
   private final TokenService tokenService;
 
   @PostMapping("/login")
-  public ResponseEntity<ResponseDTO> login(@RequestBody LoginRequestDTO body) {
+  public ResponseEntity<Response> login(@RequestBody LoginRequest body) {
     try {
       Usuario user = usuarioService.buscarPorEmail(body.email());
       
       if (passwordEncoder.matches(body.senha(), user.getSenha())) {
         String token = this.tokenService.generateToken(user);
-        return ResponseEntity.ok(new ResponseDTO(user.getEmail(), token));
+        return ResponseEntity.ok(new Response(user.getEmail(), token));
       }
       return ResponseEntity.badRequest().build();
     } catch (RuntimeException e) {
@@ -43,22 +43,22 @@ public class AuthController {
   }
 
   @PostMapping("/register/cliente")
-  public ResponseEntity<ResponseDTO> registerCliente(@RequestBody RegisterClienteRequestDTO body) {
+  public ResponseEntity<Response> registerCliente(@RequestBody RegisterClienteRequest body) {
     try {
       Usuario savedUser = usuarioService.cadastrarCliente(body);
       String token = this.tokenService.generateToken(savedUser);
-      return ResponseEntity.ok(new ResponseDTO(savedUser.getEmail(), token));
+      return ResponseEntity.ok(new Response(savedUser.getEmail(), token));
     } catch (RuntimeException e) {
       return ResponseEntity.badRequest().build();
     }
   }
 
   @PostMapping("/register/agente")
-  public ResponseEntity<ResponseDTO> registerAgente(@RequestBody RegisterAgenteRequestDTO body) {
+  public ResponseEntity<Response> registerAgente(@RequestBody RegisterAgenteRequest body) {
     try {
       Usuario savedUser = usuarioService.cadastrarAgente(body);
       String token = this.tokenService.generateToken(savedUser);
-      return ResponseEntity.ok(new ResponseDTO(savedUser.getEmail(), token));
+      return ResponseEntity.ok(new Response(savedUser.getEmail(), token));
     } catch (RuntimeException e) {
       return ResponseEntity.badRequest().build();
     }

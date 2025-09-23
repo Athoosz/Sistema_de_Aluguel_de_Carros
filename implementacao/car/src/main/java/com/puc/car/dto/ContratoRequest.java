@@ -11,7 +11,7 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ContratoRequestDTO {
+public class ContratoRequest {
     
     @NotNull(message = "Cliente é obrigatório")
     private UUID clienteId;
