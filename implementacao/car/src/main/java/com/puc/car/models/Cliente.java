@@ -3,8 +3,7 @@ package com.puc.car.models;
 import java.util.List;
 import java.util.Map;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -25,7 +24,12 @@ public class Cliente extends Usuario {
 
     private String profissao;
 
+    @ElementCollection
+    @CollectionTable(name = "cliente_renda", joinColumns = @JoinColumn(name = "cliente_id"))
+    @MapKeyColumn(name = "fonte_renda")
+    @Column(name = "valor")
     private Map<String, Double> rendaEntidade;
 
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Pedido> pedidos;
 }

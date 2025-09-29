@@ -2,16 +2,22 @@ package com.puc.car.models;
 
 import com.puc.car.models.enums.TipoContrato;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.Data;
 
 @Entity
+@Data
 public class Contrato {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Enumerated(EnumType.STRING)
     private TipoContrato tipoContrato;
 
     private double valorTotal;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "pedido_id")
+    private Pedido pedido;
 }
