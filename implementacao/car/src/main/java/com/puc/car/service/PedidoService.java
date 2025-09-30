@@ -1,8 +1,9 @@
 package com.puc.car.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.puc.car.dto.Pedido.PedidoRequestRegister;
+import com.puc.car.dto.Pedido.PedidoRegisterRequest;
 import com.puc.car.exceptions.EntityNotFoundException;
 import com.puc.car.models.Cliente;
 import com.puc.car.models.Pedido;
@@ -17,12 +18,16 @@ import com.puc.car.models.Automovel;
 @Service
 public class PedidoService {
 
+    @Autowired
     private PedidoRepository pedidoRepository;
+    @Autowired
     private AgenteRepository agenteRepository;
+    @Autowired
     private ClienteRepository clienteRepository;
+    @Autowired
     private AutomovelRepository automovelRepository;
 
-    public Pedido gerarPedido(PedidoRequestRegister pedidoRequestRegister){
+    public Pedido gerarPedido(PedidoRegisterRequest pedidoRequestRegister){
         if(pedidoRepository.existsByNumPedido(pedidoRequestRegister.numPedido()))
             throw new IllegalStateException("Não é possível registrar um pedido existente");
         Pedido pedido = new Pedido();
@@ -48,8 +53,9 @@ public class PedidoService {
         pedido.setAutomovel(automovel);
         pedido.setEstadoPedido(EstadoPedido.ANDAMENTO);
         pedido.setValorTotal(pedidoRequestRegister.valor());
+        
         //contrato não é definido inicialmente
-        return pedido;
+        return pedidoRepository.save(pedido);
     }
 
     public Pedido getPedido(String numPedido){
@@ -57,10 +63,10 @@ public class PedidoService {
                         .orElseThrow(() -> new EntityNotFoundException("Pedido não encontrado"));
     }
 
-   public void deletePedido(Long id){
-        if(pedidoRepository.existsById(id))
-            pedidoRepository.deleteById(id);
-        throw new EntityNotFoundException("Pedido não encontrado");
-   }
+    public void deletePedido(Long id){
+        if(!pedidoRepository.existsById(id))
+            throw new EntityNotFoundException("Pedido não encontrado");
+        pedidoRepository.deleteById(id);
+    }
     
 }
