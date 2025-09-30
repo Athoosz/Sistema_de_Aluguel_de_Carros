@@ -1,4 +1,4 @@
-package com.puc.car.dto.Usuariodto;
+package com.puc.car.dto.Usuario;
 
 public record LoginResponse(
     String token,
