@@ -7,12 +7,10 @@ import com.puc.car.dto.Contrato.ContratoRegisterRequest;
 import com.puc.car.exceptions.EntityNotFoundException;
 import com.puc.car.models.Contrato;
 import com.puc.car.models.Pedido;
-import com.puc.car.models.enums.TipoContrato;
 import com.puc.car.repositories.ContratoRepository;
 import com.puc.car.repositories.PedidoRepository;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Service
 public class ContratoService {

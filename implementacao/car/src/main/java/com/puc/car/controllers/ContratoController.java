@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.*;
 
 import com.puc.car.dto.Contrato.ContratoRegisterRequest;
 import com.puc.car.models.Contrato;
-import com.puc.car.models.enums.TipoContrato;
 import com.puc.car.service.ContratoService;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -14,7 +13,6 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("/contratos")
