@@ -2,7 +2,6 @@ package com.puc.car.service;
 
 import org.springframework.stereotype.Service;
 
-import com.puc.car.models.Pedido;
 import com.puc.car.repositories.PedidoRepository;
 
 @Service
