@@ -27,7 +27,6 @@ public class ContratoService {
         Pedido pedido = pedidoRepository.findById(request.pedidoId())
                 .orElseThrow(() -> new EntityNotFoundException("Pedido não encontrado"));
 
-        // Verificar se o pedido já possui contrato
         if (contratoRepository.existsByPedidoId(request.pedidoId())) {
             throw new IllegalStateException("Este pedido já possui um contrato associado");
         }
@@ -46,22 +45,6 @@ public class ContratoService {
                 .orElseThrow(() -> new EntityNotFoundException("Contrato não encontrado"));
     }
 
-    public List<Contrato> listarTodos() {
-        return contratoRepository.findAll();
-    }
-
-    public List<Contrato> buscarPorCliente(Long clienteId) {
-        return contratoRepository.findByPedidoClienteId(clienteId);
-    }
-
-    public List<Contrato> buscarPorAgente(Long agenteId) {
-        return contratoRepository.findByPedidoAgenteId(agenteId);
-    }
-
-    public List<Contrato> buscarPorTipo(TipoContrato tipoContrato) {
-        return contratoRepository.findByTipoContrato(tipoContrato);
-    }
-
     public Contrato buscarPorPedido(Long pedidoId) {
         return contratoRepository.findByPedidoId(pedidoId)
                 .orElseThrow(() -> new EntityNotFoundException("Contrato não encontrado para este pedido"));
@@ -70,7 +53,6 @@ public class ContratoService {
     public Contrato atualizarContrato(Long id, ContratoRegisterRequest request) {
         Contrato contrato = buscarPorId(id);
 
-        // Verificar se está tentando alterar para um pedido que já tem contrato
         if (!contrato.getPedido().getId().equals(request.pedidoId()) && 
             contratoRepository.existsByPedidoId(request.pedidoId())) {
             throw new IllegalStateException("O pedido informado já possui um contrato associado");

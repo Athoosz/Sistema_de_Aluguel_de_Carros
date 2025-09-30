@@ -39,34 +39,6 @@ public class ContratoController {
         return ResponseEntity.ok(contrato);
     }
 
-    @GetMapping
-    @Operation(summary = "Listar todos os contratos", description = "Retorna uma lista de todos os contratos")
-    public ResponseEntity<List<Contrato>> listarTodos() {
-        List<Contrato> contratos = contratoService.listarTodos();
-        return ResponseEntity.ok(contratos);
-    }
-
-    @GetMapping("/cliente/{clienteId}")
-    @Operation(summary = "Buscar contratos por cliente", description = "Busca todos os contratos de um cliente específico")
-    public ResponseEntity<List<Contrato>> buscarPorCliente(@PathVariable Long clienteId) {
-        List<Contrato> contratos = contratoService.buscarPorCliente(clienteId);
-        return ResponseEntity.ok(contratos);
-    }
-
-    @GetMapping("/agente/{agenteId}")
-    @Operation(summary = "Buscar contratos por agente", description = "Busca todos os contratos de um agente específico")
-    public ResponseEntity<List<Contrato>> buscarPorAgente(@PathVariable Long agenteId) {
-        List<Contrato> contratos = contratoService.buscarPorAgente(agenteId);
-        return ResponseEntity.ok(contratos);
-    }
-
-    @GetMapping("/tipo/{tipoContrato}")
-    @Operation(summary = "Buscar contratos por tipo", description = "Busca contratos de um tipo específico")
-    public ResponseEntity<List<Contrato>> buscarPorTipo(@PathVariable TipoContrato tipoContrato) {
-        List<Contrato> contratos = contratoService.buscarPorTipo(tipoContrato);
-        return ResponseEntity.ok(contratos);
-    }
-
     @GetMapping("/pedido/{pedidoId}")
     @Operation(summary = "Buscar contrato por pedido", description = "Busca o contrato associado a um pedido específico")
     public ResponseEntity<Contrato> buscarPorPedido(@PathVariable Long pedidoId) {
