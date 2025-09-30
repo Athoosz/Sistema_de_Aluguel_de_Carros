@@ -15,8 +15,6 @@ public interface AutomovelRepository extends JpaRepository<Automovel, Long>{
     
     List<Automovel> findByProprietarioId(Long proprietarioId);
     
-    List<Automovel> findByMarcaContainingIgnoreCase(String marca);
-    
     Optional<Automovel> findByMatricula(String matricula);
     
     Optional<Automovel> findByPlaca(String placa);

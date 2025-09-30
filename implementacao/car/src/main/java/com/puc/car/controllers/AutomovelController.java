@@ -38,27 +38,13 @@ public class AutomovelController {
         return ResponseEntity.ok(automovel);
     }
 
-    @GetMapping
-    @Operation(summary = "Listar todos os automóveis", description = "Retorna uma lista de todos os automóveis cadastrados")
-    public ResponseEntity<List<Automovel>> listarTodos() {
-        List<Automovel> automoveis = automovelService.listarTodos();
-        return ResponseEntity.ok(automoveis);
-    }
-
     @GetMapping("/proprietario/{proprietarioId}")
     @Operation(summary = "Buscar automóveis por proprietário", description = "Busca todos os automóveis de um proprietário específico")
     public ResponseEntity<List<Automovel>> buscarPorProprietario(@PathVariable Long proprietarioId) {
         List<Automovel> automoveis = automovelService.buscarPorProprietario(proprietarioId);
         return ResponseEntity.ok(automoveis);
     }
-
-    @GetMapping("/marca/{marca}")
-    @Operation(summary = "Buscar automóveis por marca", description = "Busca automóveis que contenham a marca especificada")
-    public ResponseEntity<List<Automovel>> buscarPorMarca(@PathVariable String marca) {
-        List<Automovel> automoveis = automovelService.buscarPorMarca(marca);
-        return ResponseEntity.ok(automoveis);
-    }
-
+    
     @PutMapping("/{id}")
     @Operation(summary = "Atualizar automóvel", description = "Atualiza os dados de um automóvel existente")
     public ResponseEntity<Automovel> atualizarAutomovel(@PathVariable Long id, 

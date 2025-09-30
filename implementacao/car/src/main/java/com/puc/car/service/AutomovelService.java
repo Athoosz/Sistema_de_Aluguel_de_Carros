@@ -49,16 +49,8 @@ public class AutomovelService {
                 .orElseThrow(() -> new EntityNotFoundException("Automóvel não encontrado"));
     }
 
-    public List<Automovel> listarTodos() {
-        return automovelRepository.findAll();
-    }
-
     public List<Automovel> buscarPorProprietario(Long proprietarioId) {
         return automovelRepository.findByProprietarioId(proprietarioId);
-    }
-
-    public List<Automovel> buscarPorMarca(String marca) {
-        return automovelRepository.findByMarcaContainingIgnoreCase(marca);
     }
 
     public Automovel atualizarAutomovel(Long id, AutomovelRegisterRequest request) {
