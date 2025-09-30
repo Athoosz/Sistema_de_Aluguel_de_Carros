@@ -1,4 +1,4 @@
-package com.puc.car.dto;
+package com.puc.car.dto.Usuariodto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

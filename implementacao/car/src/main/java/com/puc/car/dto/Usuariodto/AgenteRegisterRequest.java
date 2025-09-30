@@ -1,4 +1,4 @@
-package com.puc.car.dto;
+package com.puc.car.dto.Usuariodto;
 
 import com.puc.car.models.enums.TipoAgente;
 import jakarta.validation.constraints.Email;
