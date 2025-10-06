@@ -45,7 +45,7 @@ public class AutomovelService {
     }
 
     public Automovel buscarPorId(Long id) {
-        return automovelRepository.findById(id)
+        return automovelRepository.findByIdWithProprietario(id)
                 .orElseThrow(() -> new EntityNotFoundException("Automóvel não encontrado"));
     }
 
