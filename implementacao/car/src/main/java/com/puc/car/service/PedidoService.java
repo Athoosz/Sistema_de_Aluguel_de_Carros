@@ -13,6 +13,7 @@ import com.puc.car.repositories.ClienteRepository;
 import com.puc.car.repositories.PedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class PedidoService {
@@ -89,19 +90,25 @@ public class PedidoService {
         .orElseThrow(() -> new EntityNotFoundException("Pedido não encontrado"));
   }
 
+  @Transactional
   public void deletePedido(Long id, String token) {
       com.auth0.jwt.interfaces.DecodedJWT jwt = com.auth0.jwt.JWT.decode(token);
       String email = jwt.getSubject();
       String role = jwt.getClaim("role").asString();
+      
       if (!"CLIENTE".equals(role)) {
           throw new RuntimeException("Apenas clientes podem remover pedidos");
       }
-      Pedido pedido = pedidoRepository.findById(id).orElse(null);
-      if (pedido == null
-              || pedido.getCliente() == null
-              || !email.equals(pedido.getCliente().getEmail())) {
+      
+      // Busca o pedido com JOIN FETCH para carregar o cliente junto
+      Pedido pedido = pedidoRepository.findByIdWithCliente(id)
+          .orElseThrow(() -> new RuntimeException("Pedido não encontrado"));
+      
+
+      if (!email.equals(pedido.getCliente().getEmail())) {
           throw new RuntimeException("Você só pode remover seus próprios pedidos");
       }
+      
       pedidoRepository.deleteById(id);
   }
   
