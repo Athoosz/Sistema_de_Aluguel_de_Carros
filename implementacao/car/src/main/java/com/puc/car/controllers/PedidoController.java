@@ -95,4 +95,23 @@ public class PedidoController {
       return ResponseEntity.badRequest().body(error);
     }
   }
+
+  @PutMapping("/{id}")
+  public ResponseEntity<?> atualizarPedido(
+      @RequestHeader(HttpHeaders.AUTHORIZATION) String authorizationHeader,
+      @PathVariable Long id,
+      @RequestBody @Valid PedidoRegisterRequest pedidoRegisterRequest) {
+    try {
+      if (authorizationHeader == null || !authorizationHeader.startsWith("Bearer ")) {
+        return ResponseEntity.status(401).body("Token não informado");
+      }
+      String token = authorizationHeader.replace("Bearer ", "");
+      Pedido pedido = pedidoService.atualizarPedido(id, pedidoRegisterRequest, token);
+      return ResponseEntity.ok(pedido);
+    } catch (Exception e) {
+      Map<String, String> error = new HashMap<>();
+      error.put("error", e.getMessage());
+      return ResponseEntity.badRequest().body(error);
+    }
+  }
 }

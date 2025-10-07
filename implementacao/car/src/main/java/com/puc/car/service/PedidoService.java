@@ -1,5 +1,7 @@
 package com.puc.car.service;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import com.puc.car.dto.Pedido.PedidoRegisterRequest;
 import com.puc.car.exceptions.EntityNotFoundException;
 import com.puc.car.models.Agente;
@@ -52,7 +54,7 @@ public class PedidoService {
     pedido.setAutomovel(automovel);
     pedido.setEstadoPedido(EstadoPedido.ANDAMENTO);
     pedido.setValorTotal(pedidoRequestRegister.valor());
-    // contrato não é definido inicialmente
+ 
     return pedidoRepository.save(pedido);
   }
 
@@ -92,34 +94,42 @@ public class PedidoService {
 
   @Transactional
   public void deletePedido(Long id, String token) {
-      com.auth0.jwt.interfaces.DecodedJWT jwt = com.auth0.jwt.JWT.decode(token);
-      String email = jwt.getSubject();
-      String role = jwt.getClaim("role").asString();
-      
-      if (!"CLIENTE".equals(role)) {
-          throw new RuntimeException("Apenas clientes podem remover pedidos");
-      }
-      
-      // Busca o pedido com JOIN FETCH para carregar o cliente junto
-      Pedido pedido = pedidoRepository.findByIdWithCliente(id)
-          .orElseThrow(() -> new RuntimeException("Pedido não encontrado"));
-      
+    DecodedJWT jwt = JWT.decode(token);
+    String email = jwt.getSubject();
+    String role = jwt.getClaim("role").asString();
 
-      if (!email.equals(pedido.getCliente().getEmail())) {
-          throw new RuntimeException("Você só pode remover seus próprios pedidos");
-      }
-      
-      pedidoRepository.deleteById(id);
+    if (!"CLIENTE".equals(role)) {
+      throw new RuntimeException("Apenas clientes podem remover pedidos");
+    }
+
+    Pedido pedido =
+        pedidoRepository
+            .findByIdWithCliente(id)
+            .orElseThrow(() -> new RuntimeException("Pedido não encontrado"));
+
+    if (!email.equals(pedido.getCliente().getEmail())) {
+      throw new RuntimeException("Você só pode remover seus próprios pedidos");
+    }
+
+    pedidoRepository.deleteById(id);
   }
-  
-   public Pedido atualizarPedido(Long id, PedidoRegisterRequest pedidoRequestRegister) {
+
+  public Pedido atualizarPedido(
+      Long id, PedidoRegisterRequest pedidoRequestRegister, String token) {
+    DecodedJWT jwt = JWT.decode(token);
+    String email = jwt.getSubject();
+    String role = jwt.getClaim("role").asString();
+    if (!"CLIENTE".equals(role)) {
+      throw new RuntimeException("Apenas clientes podem atualizar pedidos");
+    }
     Pedido pedido =
         pedidoRepository
             .findById(id)
             .orElseThrow(() -> new EntityNotFoundException("Pedido não encontrado"));
-    // Atualiza apenas campos permitidos
+    if (!email.equals(pedido.getCliente().getEmail())) {
+      throw new RuntimeException("Você só pode atualizar seus próprios pedidos");
+    }
     pedido.setValorTotal(pedidoRequestRegister.valor());
-    // Se quiser permitir atualização de automóvel, agente, etc, adicione aqui
     return pedidoRepository.save(pedido);
   }
 
