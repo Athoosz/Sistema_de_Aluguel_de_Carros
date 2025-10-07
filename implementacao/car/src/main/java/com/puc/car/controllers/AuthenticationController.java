@@ -1,9 +1,9 @@
 package com.puc.car.controllers;
 
-import com.puc.car.dto.Usuariodto.AgenteRegisterRequest;
-import com.puc.car.dto.Usuariodto.ClienteRegisterRequest;
-import com.puc.car.dto.Usuariodto.LoginRequest;
-import com.puc.car.dto.Usuariodto.LoginResponse;
+import com.puc.car.dto.Usuario.AgenteRegisterRequest;
+import com.puc.car.dto.Usuario.ClienteRegisterRequest;
+import com.puc.car.dto.Usuario.LoginRequest;
+import com.puc.car.dto.Usuario.LoginResponse;
 import com.puc.car.models.Agente;
 import com.puc.car.models.Cliente;
 import com.puc.car.models.Usuario;
